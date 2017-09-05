@@ -20,6 +20,18 @@ class App extends React.Component {
         </div> */}
         <div className="parent">
           <div className="child">
+            <div className="stat move-stat">
+              <p>5"</p>    
+            </div>  
+            <div className="stat wound-stat">
+              <p>2</p>    
+            </div>  
+            <div className="stat bravery-stat">
+              <p>6</p>    
+            </div>  
+            <div className="stat save-stat">
+              <p>4+</p>    
+            </div>  
           </div>
         </div>
       </div>
