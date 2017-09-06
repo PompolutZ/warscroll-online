@@ -1,39 +1,63 @@
 import * as React from 'react';
 import './App.css';
+import { Table } from 'react-bootstrap';
 
-// const logo = require('./logo.svg');
-// const profileHalo = require('./imgs/profilehalo.png');
+const wsdata = require('json-loader!./warscrolls/lordcelestant.json');
+
+function WeaponToRow(props: any) {
+  console.log(props.weapon);
+  return (
+    <tr>
+    <td>{props.weapon.name}</td>
+    <td>{`${props.weapon.range}"`}</td>
+    <td>{props.weapon.attacks}</td>
+    <td>{`${props.weapon.toHit}+`}</td>
+    <td>{`${props.weapon.toWound}+`}</td>
+    <td>{props.weapon.rend ? props.weapon.rend : '-'}</td>
+    <td>{props.weapon.damage}</td>
+  </tr>
+  );
+}
 
 class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <div className="App-header">
-          <img src={profileHalo} className="App-logo" alt="logo" />
-          <h2>Welcome to React!!!</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <div className="profile-container">
-          <img src={profileHalo} className="profile-halo" alt="logo" />
-        </div> */}
         <div className="parent">
           <div className="child">
             <div className="stat move-stat">
-              <p>5"</p>    
+              <p>{`${wsdata.move}"`}</p>    
             </div>  
             <div className="stat wound-stat">
-              <p>2</p>    
+              <p>{wsdata.wounds}</p>    
             </div>  
             <div className="stat bravery-stat">
-              <p>6</p>    
+              <p>{wsdata.bravery}</p>    
             </div>  
             <div className="stat save-stat">
-              <p>4+</p>    
+              <p>{`${wsdata.save}+`}</p>    
             </div>  
           </div>
         </div>
+
+        <Table responsive condensed>
+          <thead>
+            <tr>
+              <th>MELEE WEAPON</th>
+              <th>Range</th>
+              <th>Attacks</th>
+              <th>To Hit</th>
+              <th>To Wound</th>
+              <th>Rend</th>
+              <th>Damage</th>
+            </tr>
+          </thead>
+          <tbody> 
+            {
+              wsdata.meleeWeapons.map((weapon: any) => <WeaponToRow key={weapon.name} weapon={weapon} />)
+            } 
+          </tbody>        
+        </Table>  
       </div>
     );
   }

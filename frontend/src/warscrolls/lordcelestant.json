@@ -13,7 +13,7 @@
             "attacks": 4,
             "toHit": 3,
             "toWound": 3,
-            "Rend": -1,
+            "rend": -1,
             "damage": 1
         },
         {
@@ -22,7 +22,7 @@
             "attacks": 2,
             "toHit": 4,
             "toWound": 3,
-            "Rend": null,
+            "rend": null,
             "damage": 1
         }
     ],

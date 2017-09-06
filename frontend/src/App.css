@@ -13,8 +13,8 @@
 
 .parent {
   display: flex;
-  height: 300px;
-  background: magenta;
+  /* height: 300px; */
+  /* background: magenta; */
 }
 
 .child {
