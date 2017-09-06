@@ -20,36 +20,38 @@
 .child {
   width: 100px;
   height: 100px;
-  background: orange;
+  background-image: url('./imgs/profilehalo.png');
+  background-size: 100% 100%;
   margin-left: 5px;
   margin-top: 5px;
 }
 
 .stat {
-  font-size:20px;
+  font-size:18px;
+  color: white;
 	font-style:normal;
   font-weight:bold;
   position: absolute;
 }
 
 .move-stat {
-  margin-top: 5px;
-  margin-left: 40px;
+  margin-top: 15px;
+  margin-left: 45px;
 }
 
 .wound-stat {
-  margin-top: 40px;
-  margin-left: 5px;
+  margin-top: 37px;
+  margin-left: 25px;
 }
 
 .bravery-stat {
   margin-left: 45px;
-  margin-top: 70px;
+  margin-top: 60px;
 }
 
 .save-stat {
-  margin-top: 40px;
-  margin-left: 75px;
+  margin-top: 37px;
+  margin-left: 65px;
 }
 
 .profile-halo {
