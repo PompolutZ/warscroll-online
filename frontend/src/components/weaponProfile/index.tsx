@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Table } from 'react-bootstrap';
+import { WeaponProfile } from '../../types';
+import './index.css';
 
 export const WeaponProfileHeader = () => {
     return (
@@ -15,19 +17,45 @@ export const WeaponProfileHeader = () => {
             </tr>
         </thead>
     );
+};
+
+interface WeaponProfileRowProps {
+    key: string;
+    weapon: WeaponProfile;
 }
 
-export const WeaponProfileRow = (props: any) => {
-    return (
-        <tr>
-            <td>{props.weapon.name}</td>
-            <td>{`${props.weapon.range}"`}</td>
-            <td>{props.weapon.attacks}</td>
-            <td>{`${props.weapon.toHit}+`}</td>
-            <td>{`${props.weapon.toWound}+`}</td>
-            <td>{props.weapon.rend ? props.weapon.rend : '-'}</td>
-            <td>{props.weapon.damage}</td>
-        </tr>
-    );
+interface WeaponProfilesProps {
+    meleeWeapons: WeaponProfile[];
 }
 
+class WeaponProfileRow extends React.Component<WeaponProfileRowProps, {}> {
+    render() {
+        return (
+            <tr>
+                <td>{this.props.weapon.name}</td>
+                <td>{`${this.props.weapon.range}"`}</td>
+                <td>{this.props.weapon.attacks}</td>
+                <td>{`${this.props.weapon.toHit}+`}</td>
+                <td>{`${this.props.weapon.toWound}+`}</td>
+                <td>{this.props.weapon.rend ? this.props.weapon.rend : '-'}</td>
+                <td>{this.props.weapon.damage}</td>
+            </tr>
+        );
+    }
+}
+
+export class WeaponProfiles extends React.Component<WeaponProfilesProps, {}> {
+    render() {
+        return (
+            <Table responsive={true} condensed={true}>
+                <WeaponProfileHeader />
+                <tbody> 
+                { 
+                    this.props.meleeWeapons
+                         .map((weapon: WeaponProfile) => <WeaponProfileRow key={weapon.name} weapon={weapon} />)
+                }
+                </tbody>        
+          </Table>  
+        );
+    }
+}
