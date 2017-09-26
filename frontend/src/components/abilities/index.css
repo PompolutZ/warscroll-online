@@ -1,0 +1,17 @@
+.item {
+    border-bottom: 1px solid;
+    border-color: lightgray;
+    margin-bottom: 10px;
+    text-align: left;  
+}
+
+.lastItem {
+    border-bottom: 1px solid;
+    border-color: white;
+    margin-bottom: 10px;
+    text-align: left;  
+}
+
+.header {
+    font-weight: bold;
+}

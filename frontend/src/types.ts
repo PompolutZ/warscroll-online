@@ -13,6 +13,14 @@ export enum AbilityType {
     Command
 }
 
+export interface Ability {
+    name: string;
+    desc: string;
+    abilityActivationPhase: TurnPhase;
+    affectPhases: TurnPhase[];
+    type: AbilityType;
+}
+
 export interface WeaponProfile {
     name: string;
     range: number;
