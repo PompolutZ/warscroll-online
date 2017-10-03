@@ -58,7 +58,7 @@ export class AbilitiesPanel extends React.Component<AbilitiesPanelProps, {}> {
     render() {
         return (
             <Panel header={'Abilities'} bsStyle="info">
-                {this.props.abilities.map((a, i) => 
+                {this.props.abilities && this.props.abilities.map((a, i) => 
                     <AbilityRow 
                         key={i} 
                         ability={a}

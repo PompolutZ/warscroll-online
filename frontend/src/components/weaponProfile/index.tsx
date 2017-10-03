@@ -51,7 +51,7 @@ export class WeaponProfiles extends React.Component<WeaponProfilesProps, {}> {
                 <WeaponProfileHeader />
                 <tbody> 
                 { 
-                    this.props.meleeWeapons
+                    this.props.meleeWeapons && this.props.meleeWeapons
                          .map((weapon: WeaponProfile) => <WeaponProfileRow key={weapon.name} weapon={weapon} />)
                 }
                 </tbody>        
