@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Panel, Label } from 'react-bootstrap';
+import * as ReactMarkdown from 'react-markdown';
 
 import { Ability, TurnPhase, AbilityType } from '../../types'; 
 import './index.css';
@@ -40,7 +41,7 @@ class AbilityRow extends React.Component<AbilityRowProps, {}> {
                         <Label bsStyle="warning">{AbilityType[this.props.ability.type]}</Label>
                     }
                 </h4>
-                <p>{this.props.ability.desc}</p>
+                <ReactMarkdown source={this.props.ability.desc} />
                 <p>
                     <b>Activates in:</b> <Label bsStyle="info">
                         {TurnPhase[this.props.ability.abilityActivationPhase].toUpperCase()}</Label>

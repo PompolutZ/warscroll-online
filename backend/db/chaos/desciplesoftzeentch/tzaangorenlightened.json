@@ -38,7 +38,7 @@
     "abilities": [
         {
             "name": "Aviarch",
-            "desc": "The leader of this unit is Aviarch. Aviarch makes 3 attacks\n            rather 2 with its Tzeentchian Spear.",
+            "desc": "The leader of this unit is **Aviarch**. Aviarch **makes 3** attacks\n            rather **2** with its **Tzeentchian Spear**.",
             "abilityActivationPhase": 6,
             "affectPhases": [
                 4,
@@ -48,7 +48,7 @@
         },
         {
             "name": "Discs of Tzeenth",
-            "desc": "If unit of Tzaangor Enlightened is on top of the disk it\n            grants them move of 16\" and the Teeth and Horns attack. Also they can fly\n            and have wounds characteristic of 4 instead of 3. Also they gain DEMON keyword.",
+            "desc": "If unit of Tzaangor Enlightened is on top of the disk it\n            grants them **move of 16\" and the Teeth and Horns attack**. Also they **can fly**\n            and have **wounds** characteristic of **4 instead of 3**. Also they gain **DEMON** keyword.",
             "abilityActivationPhase": 6,
             "affectPhases": [
                 6

@@ -144,8 +144,8 @@ const tzaangorEnlightened = {
     abilities: [
         {
             name: 'Aviarch',
-            desc: `The leader of this unit is Aviarch. Aviarch makes 3 attacks
-            rather 2 with its Tzeentchian Spear.`,
+            desc: `The leader of this unit is **Aviarch**. Aviarch **makes 3** attacks
+            rather **2** with its **Tzeentchian Spear**.`,
             abilityActivationPhase: TurnPhase.Any,
             affectPhases: [TurnPhase.Combat, TurnPhase.Any],
             type: AbilityType.Leader
@@ -153,8 +153,8 @@ const tzaangorEnlightened = {
         {
             name: 'Discs of Tzeenth',
             desc: `If unit of Tzaangor Enlightened is on top of the disk it
-            grants them move of 16" and the Teeth and Horns attack. Also they can fly
-            and have wounds characteristic of 4 instead of 3. Also they gain DEMON keyword.`,
+            grants them **move of 16" and the Teeth and Horns attack**. Also they **can fly**
+            and have **wounds** characteristic of **4 instead of 3**. Also they gain **DEMON** keyword.`,
             abilityActivationPhase: TurnPhase.Any,
             affectPhases: [TurnPhase.Any],
             type: AbilityType.None
