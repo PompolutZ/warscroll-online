@@ -7,9 +7,42 @@ import { WeaponProfiles } from './components/weaponProfile/index';
 import { AbilitiesPanel } from './components/abilities/index';
 import { UnitCoreStats } from './types';
 
+import { Link, Switch, Route } from 'react-router-dom';
 
+const Header = () => {
+  return (
+      <header>
+        <nav>
+          <ul>
+            <li><Link to='/'>Home</Link></li>
+            <li><Link to='/warscroll/lordcelestant'>Lord-Celestant</Link></li>
+            <li><Link to='/warscroll/tzaangorenlightened'>Tzaangor Enlightened</Link></li>
+          </ul>      
+        </nav>  
+    </header>  
+  );
+}
 
-class App extends React.Component<{}, any> {
+const Home = () => {
+  return (
+    <div>
+      <h1>Welcome to AOS</h1>
+    </div>
+  );
+}
+
+const Main = () => {
+  return (
+    <main>
+      <Switch>
+        <Route exact path='/' component={Home}></Route>
+        <Route path='/warscroll/:name' component={Warscroll}></Route>
+      </Switch>  
+    </main>  
+  );
+}
+
+class Warscroll extends React.Component<any, any> {
   constructor(props: any) {
     super(props);
 
@@ -19,7 +52,7 @@ class App extends React.Component<{}, any> {
   }
 
   async componentDidMount() {
-    const res = await fetch(`/ws/tzaangorenlightened`);
+    const res = await fetch(`/ws/${this.props.match.params.name}`);
     const data = await res.json();
     this.setState({wsdata: data}); 
   }
@@ -36,6 +69,7 @@ class App extends React.Component<{}, any> {
       <Grid>
         <Row className="show-grid">
           <Col xs={12}>
+            <Link to="/">Back</Link>
             <ProfileHalo stats={coreStats} />
             <WeaponProfiles meleeWeapons={this.state.wsdata.meleeWeapons} />
             <AbilitiesPanel abilities={this.state.wsdata.abilities} />  
@@ -47,6 +81,17 @@ class App extends React.Component<{}, any> {
     return (
       <div className="App">
         {mainGrid}
+      </div>
+    );
+  }
+}
+
+class App extends React.Component<{}, any> {
+  render() {
+    return (
+      <div>
+        <Header /> 
+        <Main /> 
       </div>
     );
   }
