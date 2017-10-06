@@ -6,6 +6,7 @@ import { ProfileHalo } from './components/profileHalo/index';
 import { WeaponProfiles } from './components/weaponProfile/index';
 import { AbilitiesPanel } from './components/abilities/index';
 import { UnitCoreStats } from './types';
+import * as _ from 'underscore';
 
 import { Link, Switch, Route } from 'react-router-dom';
 
@@ -17,12 +18,43 @@ const Header = () => {
   );
 }
 
-const Home = () => {
+const WarscrollLink = (props: any) => {
   return (
-    <div>
-      <h1>Welcome to AOS</h1>
-    </div>
+    <h4>
+      <Link to={`/warscroll/${props.name}`}>
+        {props.name}
+      </Link>
+    </h4>
   );
+}
+
+class Home extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      warscrolls: []
+    }
+  }
+
+  async componentDidMount() {
+    const res = await fetch(`/db`);
+    const data = await res.json();
+    this.setState({
+      warscrolls: _.keys(data).filter((el: string) => !el.startsWith('_'))
+    });
+  }
+
+  render() {
+    const links: any = 
+      this.state.warscrolls.map((el: string, i:number) => {
+        return <WarscrollLink name={el} key={i} /> 
+      });
+
+    return (
+      <div>{links}</div>
+    );
+  }
 }
 
 const Main = () => {
