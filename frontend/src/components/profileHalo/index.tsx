@@ -13,7 +13,7 @@ export class ProfileHalo extends React.Component<ProfileHaloProps, {}> {
             <div className="parent">
                 <div className="child">
                     <div className="stat move-stat">
-                        <p>{`${this.props.stats.move}"`}</p>    
+                        <p>{`${this.props.stats.move}${this.props.stats.move !== '*' ? `"` : ``}`}</p>    
                     </div>  
                     <div className="stat wound-stat">
                         <p>{this.props.stats.wounds}</p>    

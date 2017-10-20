@@ -21,18 +21,24 @@ export interface Ability {
     type: AbilityType;
 }
 
+export enum WeaponType {
+    Melee,
+    Missile
+}
+
 export interface WeaponProfile {
     name: string;
-    range: number;
-    attacks: number;
-    toHit: number;
-    toWound: number;
-    rend?: number;
-    damage: number;
+    type: WeaponType;
+    range: number | string;
+    attacks: number | string;
+    toHit: number | string;
+    toWound: number | string;
+    rend: number | string;
+    damage: number | string;
 }
 
 export interface UnitCoreStats {
-    move: number;
+    move: number | string;
     wounds: number;
     save: number;
     bravery: number;

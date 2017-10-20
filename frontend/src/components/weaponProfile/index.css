@@ -1,3 +1,17 @@
 th {
     text-align: center;
 }
+
+.title {
+    text-align: left;
+    margin-top: 10px;
+}
+
+.rawText {
+    text-align: left;
+    font-size: 28px;
+}
+
+.bottomBorder {
+    border-bottom: 1px solid lightgray;
+}

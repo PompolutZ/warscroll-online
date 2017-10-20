@@ -36,9 +36,9 @@ class WarscrollLink extends React.Component<any, any> {
     });
   }
 
-  renderDropDown = (items: string[], i: number) => {
-    const renderMenuItems = (item: string, it: number) => {
-      return <MenuItem eventKey={i} key={it}>{items.join('/')}</MenuItem>;
+  renderDropDown = (items: string[][], i: number) => {
+    const renderMenuItems = (i: string[], it: number) => {
+      return <MenuItem eventKey={i} key={it}>{i.join(' / ')}</MenuItem>;
     };
 
     return (
@@ -131,7 +131,7 @@ class Warscroll extends React.Component<any, any> {
           <Col xs={12}>
             <Link to="/">Back</Link>
             <ProfileHalo stats={coreStats} />
-            <WeaponProfiles meleeWeapons={this.state.wsdata.meleeWeapons} />
+            <WeaponProfiles weapons={this.state.wsdata.weaponProfiles} />
             <AbilitiesPanel abilities={this.state.wsdata.abilities} />  
           </Col>
         </Row>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Grid, Row, Col } from 'react-bootstrap';
 import { WeaponProfile } from '../../types';
 import './index.css';
 
@@ -22,13 +22,14 @@ export const WeaponProfileHeader = () => {
 interface WeaponProfileRowProps {
     key: string;
     weapon: WeaponProfile;
+    style?: string
 }
 
 interface WeaponProfilesProps {
-    meleeWeapons: WeaponProfile[];
+    weapons: WeaponProfile[];
 }
 
-class WeaponProfileRow extends React.Component<WeaponProfileRowProps, {}> {
+class WeaponProfileTableRow extends React.Component<WeaponProfileRowProps, {}> {
     render() {
         return (
             <tr>
@@ -44,18 +45,56 @@ class WeaponProfileRow extends React.Component<WeaponProfileRowProps, {}> {
     }
 }
 
+class WeaponProfileSmallDeviceRow extends React.Component<WeaponProfileRowProps, {}> {
+    render() {
+        return (
+            <div>
+                <Row className="show-grid">
+                    <Col mdHidden={true} smHidden={true} xs={12} className="title">
+                        <span>{this.props.weapon.name}: </span>
+                    </Col>
+                </Row>
+                <Row className="show-grid">
+                    <Col mdHidden={true} smHidden={true} xs={12} className={this.props.style}>
+                        <span>{`${this.props.weapon.range}"`} / </span>
+                        <span>{this.props.weapon.attacks} / </span>
+                        <span>{`${this.props.weapon.toHit}+`} / </span>
+                        <span>{`${this.props.weapon.toWound}+`} / </span>
+                        <span>{this.props.weapon.rend ? this.props.weapon.rend : '-'} / </span>
+                        <span>{this.props.weapon.damage}</span>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
+}
+
 export class WeaponProfiles extends React.Component<WeaponProfilesProps, {}> {
     render() {
         return (
-            <Table responsive={true} condensed={true}>
-                <WeaponProfileHeader />
-                <tbody> 
-                { 
-                    this.props.meleeWeapons && this.props.meleeWeapons
-                         .map((weapon: WeaponProfile) => <WeaponProfileRow key={weapon.name} weapon={weapon} />)
+            <Grid>
+                <Row className="show-grid">
+                    <Col xsHidden={true} md={12}>
+                        <Table responsive={true} condensed={true}>
+                            <WeaponProfileHeader />
+                            <tbody> 
+                            { 
+                                this.props.weapons && this.props.weapons
+                                    .map((weapon: WeaponProfile) => <WeaponProfileTableRow key={weapon.name} weapon={weapon} />)
+                            }
+                            </tbody>        
+                        </Table>  
+                    </Col>
+                </Row>
+                {
+                    this.props.weapons && 
+                    this.props.weapons.map(
+                        (weapon: WeaponProfile, i: number) => 
+                            <WeaponProfileSmallDeviceRow key={weapon.name} 
+                                                         weapon={weapon}
+                                                         style={(i === this.props.weapons.length - 1) ? 'rawText' : 'rawText bottomBorder'} />)
                 }
-                </tbody>        
-          </Table>  
+            </Grid>
         );
     }
 }
